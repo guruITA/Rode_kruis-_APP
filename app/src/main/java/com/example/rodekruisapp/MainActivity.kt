@@ -18,6 +18,7 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, FirstActivity::class.java)
             startActivity(intent)
         }
+
         
         //ambulance -> secondActivity
         val ambulance : Button = findViewById(R.id.ambulance)
