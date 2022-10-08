@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SecondActivity"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="16dp"
+        android:gravity="center_vertical"
+        android:text="Uitgifte auto"
+        android:textSize="20dp" />
+    
+    <EditText
+        android:id="@+id/gebruiker"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@color/white"
+        android:hint="Naam gebruiker"
+        android:padding="5dp" />
+
+    <EditText
+        android:id="@+id/gebruiker1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@color/white"
+        android:hint="Naam RKLC"
+        android:padding="5dp" />
+
+    <EditText
+        android:id="@+id/kenteken"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@color/white"
+        android:hint="Uitgifte personenauto kenteken"
+        android:padding="5dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+
+        <EditText
+            android:id="@+id/datum"
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:hint="Datum"
+            android:padding="5dp"
+            android:editable="false"/>
+
+        <Button
+            android:id="@+id/btndatum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Huidige"
+            android:textAllCaps="false"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="16dp"
+        android:gravity="center_vertical"
+        android:text="Accessories"
+        android:textSize="20dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+
+        <CheckBox
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="Kabel"/>
+
+        <CheckBox
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="Nummerplaten" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+
+        <CheckBox
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="Dieselslot"/>
+
+        <CheckBox
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="Fietsendrager" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <CheckBox
+            android:layout_width="150dp"
+            android:layout_marginLeft="46dp"
+            android:layout_height="wrap_content"
+            android:text="Dieselslot"/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/verstuur"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:backgroundTint="#09608F"
+        android:text="Versturen"
+        android:textAllCaps="false" />
+
+</LinearLayout>
