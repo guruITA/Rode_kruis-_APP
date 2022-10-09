@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 
-
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,13 +18,13 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        
         //ambulance -> secondActivity
         val ambulance : Button = findViewById(R.id.ambulance)
         ambulance.setOnClickListener{
             val intent = Intent(this, SecondActivity::class.java)
             startActivity(intent)
         }
+
     }
 }
 
