@@ -19,6 +19,7 @@
             android:name=".FirstActivity"
             android:exported="false"
             android:parentActivityName=".MainActivity"/>
+
         <activity
             android:name=".SecondActivity"
             android:exported="false"

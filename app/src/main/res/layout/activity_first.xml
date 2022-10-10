@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SecondActivity"
+    android:fillViewport="true">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FirstActivity"
     android:orientation="vertical">
 
     <TextView
@@ -47,8 +52,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_margin="10dp">
+        android:layout_margin="10dp"
+        android:gravity="center">
 
         <EditText
             android:id="@+id/datum"
@@ -58,6 +63,7 @@
             android:editable="false"
             android:hint="Datum"
             android:padding="5dp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             tools:ignore="MissingConstraints" />
 
@@ -89,7 +95,7 @@
         <CheckBox
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:text="Kabel"/>
+            android:text="Kabel" />
 
         <CheckBox
             android:layout_width="150dp"
@@ -106,7 +112,7 @@
         <CheckBox
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:text="Dieselslot"/>
+            android:text="Dieselslot" />
 
         <CheckBox
             android:layout_width="150dp"
@@ -127,9 +133,16 @@
 
         <Space
             android:layout_width="150dp"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content" />
 
     </LinearLayout>
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        tools:srcCompat="@tools:sample/avatars"
+        android:layout_gravity="center"/>
 
     <Button
         android:id="@+id/verstuur"
@@ -141,3 +154,4 @@
         android:textAllCaps="false" />
 
 </LinearLayout>
+</ScrollView>
