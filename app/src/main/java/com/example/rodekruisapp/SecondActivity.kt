@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import java.text.SimpleDateFormat
 import java.util.*
 
-class SecondActivity : AppCompatActivity() {
+class qSecondActivity : AppCompatActivity() {
 
     //huidige tijd
     lateinit var calendar: Calendar
@@ -28,6 +28,7 @@ class SecondActivity : AppCompatActivity() {
         //huidige tijd
         textView = findViewById(R.id.datum)
         button = findViewById(R.id.btndatum)
+        
         calendar = Calendar.getInstance()
         simpleDateFormat = SimpleDateFormat("dd-MM-yyyy HH:mm:ss")
         date = simpleDateFormat.format(calendar.time)
