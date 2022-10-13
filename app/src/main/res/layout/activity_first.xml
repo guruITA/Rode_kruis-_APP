@@ -9,6 +9,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginBottom="20dp"
         android:orientation="vertical"
         tools:context=".FirstActivity">
 
@@ -28,7 +29,8 @@
             android:layout_margin="10dp"
             android:background="@color/white"
             android:hint="Naam gebruiker"
-            android:padding="5dp" />
+            android:padding="5dp"
+            android:inputType="text"/>
 
         <EditText
             android:id="@+id/gebruiker1"
@@ -37,7 +39,8 @@
             android:layout_margin="10dp"
             android:background="@color/white"
             android:hint="Naam RKLC"
-            android:padding="5dp" />
+            android:padding="5dp"
+            android:inputType="text"/>
 
         <EditText
             android:id="@+id/kenteken"
@@ -46,7 +49,8 @@
             android:layout_margin="10dp"
             android:background="@color/white"
             android:hint="Uitgifte personenauto kenteken"
-            android:padding="5dp" />
+            android:padding="5dp"
+            android:inputType="text"/>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -82,6 +86,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="16dp"
+            android:layout_marginBottom="20dp"
             android:gravity="center_vertical"
             android:text="Accessories"
             android:textSize="20dp" />
@@ -141,9 +146,19 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="16dp"
+            android:layout_marginBottom="20dp"
             android:gravity="center_vertical"
             android:text="Foto uploaden"
             android:textSize="20dp" />
+
+        <Button
+            android:id="@+id/pickImageBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Selecteer foto's"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:ignore="MissingConstraints" />
 
         <ImageSwitcher
             android:id="@+id/imageSwitcher"
@@ -177,15 +192,6 @@
                 tools:ignore="MissingConstraints" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <Button
-            android:id="@+id/pickImageBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Selecteer foto's"
-            app:layout_constraintEnd_toEndOf="parent"
-            tools:ignore="MissingConstraints" />
 
         <Button
             android:id="@+id/verstuur"
