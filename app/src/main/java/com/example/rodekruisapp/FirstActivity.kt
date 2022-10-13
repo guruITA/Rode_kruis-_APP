@@ -104,22 +104,22 @@ class FirstActivity : AppCompatActivity() {
                     }
                     pickIImageSwitcher.setImageURI(images!![0])
                     position = 0
+
+                    if (previosBtn.isInvisible) {
+                        previosBtn.setVisibility(View.VISIBLE)
+                    } else {
+                        previosBtn.setVisibility(View.INVISIBLE)
+                    }
+
+                    if (nextBtn.isInvisible) {
+                        nextBtn.setVisibility(View.VISIBLE)
+                    } else {
+                        nextBtn.setVisibility(View.INVISIBLE)
+                    }
                 } else {
                     val imageUri = data.data
                     pickIImageSwitcher.setImageURI(imageUri)
                     position = 0
-                }
-
-                if (previosBtn.isInvisible) {
-                    previosBtn.setVisibility(View.VISIBLE)
-                } else {
-                    previosBtn.setVisibility(View.INVISIBLE)
-                }
-
-                if (nextBtn.isInvisible) {
-                    nextBtn.setVisibility(View.VISIBLE)
-                } else {
-                    nextBtn.setVisibility(View.INVISIBLE)
                 }
             }
         }
