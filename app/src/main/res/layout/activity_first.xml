@@ -40,7 +40,7 @@
             android:background="@color/white"
             android:hint="Naam RKLC"
             android:padding="5dp"
-            android:inputType="text"/>
+            android:inputType="text"    />
 
         <EditText
             android:id="@+id/kenteken"
@@ -179,7 +179,9 @@
                 android:layout_height="wrap_content"
                 android:text="Vorige"
                 android:visibility="invisible"
-                tools:ignore="MissingConstraints" />
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="16dp" />
 
             <Button
                 android:id="@+id/nextBtn"
@@ -189,15 +191,6 @@
                 android:text="Volgende"
                 android:visibility="invisible"
                 app:layout_constraintEnd_toEndOf="parent"
-                tools:ignore="MissingConstraints" />
-
-            <Button
-                android:id="@+id/deleteFoto"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Delete"
-                android:visibility="invisible"
-                tools:layout_editor_absoluteX="131dp"
                 tools:ignore="MissingConstraints" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,6 +1,7 @@
 package com.example.rodekruisapp
 
 import android.app.Activity
+import android.app.AlertDialog
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -30,6 +31,9 @@ class FirstActivity : AppCompatActivity() {
     private var images: ArrayList<Uri?>? = null
     private var position = 0
     private val PICK_IMAGES_CODE = 0
+
+    //Voor AVG check
+    lateinit var verstuur: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -79,8 +83,26 @@ class FirstActivity : AppCompatActivity() {
                 Toast.makeText(this, "Geen foto's meer...", Toast.LENGTH_SHORT).show()
             }
         }
+
+        //Voor AVG check
+        verstuur = findViewById(R.id.verstuur)
+        var builder = AlertDialog.Builder(this)
+
+        verstuur.setOnClickListener {
+            builder.setTitle("Toestemming verwerken persoongegevens")
+                .setMessage("Uw gegevens worden 3 maanden in ons systeem bewaard, gaat u hiermee akkoord?")
+                .setCancelable(true)
+                .setPositiveButton("Ja") { dialogInterface, it ->
+                    finish()
+                }
+                .setNegativeButton("Nee") { dialogInterface, it ->
+                    dialogInterface.cancel()
+                }
+                .show()
+        }
     }
 
+    //Foto uploaden
     private fun pickImageIntent() {
         val intent = Intent()
         intent.type = "image/*"
@@ -102,6 +124,7 @@ class FirstActivity : AppCompatActivity() {
                         val imageUri = data.clipData!!.getItemAt(i).uri
                         images!!.add(imageUri)
                     }
+
                     pickIImageSwitcher.setImageURI(images!![0])
                     position = 0
 
