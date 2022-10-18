@@ -15,6 +15,12 @@ import kotlin.collections.ArrayList
 
 class FirstActivity : AppCompatActivity() {
 
+    //Edit text kan niet leeg zijn
+    lateinit var naamGebruiker: EditText
+    lateinit var controleur: EditText
+    lateinit var kenteken: EditText
+    lateinit var datum: EditText
+
     //huidige tijd
     lateinit var calendar: Calendar
     lateinit var simpleDateFormat: SimpleDateFormat
@@ -43,6 +49,11 @@ class FirstActivity : AppCompatActivity() {
         val actionBar = supportActionBar
         actionBar!!.title = "Auto"
         actionBar.setDisplayHomeAsUpEnabled(true)
+
+        //Edit text kan niet leeg zijn
+        naamGebruiker = findViewById(R.id.naamGebruiker)
+        controleur = findViewById(R.id.controleur)
+        kenteken = findViewById(R.id.kenteken)
 
         //huidige tijd
         textView = findViewById(R.id.datum)
@@ -89,16 +100,32 @@ class FirstActivity : AppCompatActivity() {
         var builder = AlertDialog.Builder(this)
 
         verstuur.setOnClickListener {
-            builder.setTitle("Toestemming verwerken persoongegevens")
-                .setMessage("Uw gegevens worden 3 maanden in ons systeem bewaard, gaat u hiermee akkoord?")
-                .setCancelable(true)
-                .setPositiveButton("Ja") { dialogInterface, it ->
-                    finish()
-                }
-                .setNegativeButton("Nee") { dialogInterface, it ->
-                    dialogInterface.cancel()
-                }
-                .show()
+            if (naamGebruiker.text.toString().trim().isEmpty()) {
+                naamGebruiker.error = "Verplicht"
+            }
+            if (controleur.text.toString().trim().isEmpty()) {
+                controleur.error = "Verplicht"
+            }
+            if (kenteken.text.toString().trim().isEmpty()) {
+                kenteken.error = "Verplicht"
+            }
+            if (textView.text.toString().trim().isEmpty()) {
+                textView.error = "Verplicht"
+            }
+            else if (naamGebruiker.text.toString().trim().isNotEmpty() || controleur.text.toString().trim().isNotEmpty() || kenteken.text.toString().trim().isNotEmpty())
+            {
+                //Voor AVG check
+                builder.setTitle("Toestemming verwerken persoongegevens")
+                    .setMessage("Uw gegevens worden 3 maanden in ons systeem bewaard, gaat u hiermee akkoord?")
+                    .setCancelable(true)
+                    .setPositiveButton("Ja") { dialogInterface, it ->
+                        finish()
+                    }
+                    .setNegativeButton("Nee") { dialogInterface, it ->
+                        dialogInterface.cancel()
+                    }
+                    .show()
+            }
         }
     }
 
