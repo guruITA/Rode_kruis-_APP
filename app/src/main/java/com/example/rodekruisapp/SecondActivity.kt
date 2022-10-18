@@ -13,7 +13,12 @@ import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
 
-class qSecondActivity : AppCompatActivity() {
+class SecondActivity : AppCompatActivity() {
+
+    //Edit text kan niet leeg zijn
+    lateinit var naamGebruiker: EditText
+    lateinit var controleur: EditText
+    lateinit var kenteken: EditText
 
     //huidige tijd
     lateinit var calendar: Calendar
@@ -44,10 +49,14 @@ class qSecondActivity : AppCompatActivity() {
         actionBar!!.title = "Ambulance"
         actionBar.setDisplayHomeAsUpEnabled(true)
 
+        //Edit text kan niet leeg zijn
+        naamGebruiker = findViewById(R.id.naamGebruiker)
+        controleur = findViewById(R.id.controleur)
+        kenteken = findViewById(R.id.kenteken)
+
         //huidige tijd
         textView = findViewById(R.id.datum)
         button = findViewById(R.id.btndatum)
-        
         calendar = Calendar.getInstance()
         simpleDateFormat = SimpleDateFormat("dd-MM-yyyy HH:mm:ss")
         date = simpleDateFormat.format(calendar.time)
@@ -90,16 +99,33 @@ class qSecondActivity : AppCompatActivity() {
         var builder = AlertDialog.Builder(this)
 
         verstuur.setOnClickListener {
-            builder.setTitle("Toestemming verwerken persoongegevens")
-                .setMessage("Uw gegevens worden 3 maanden in ons systeem bewaard, gaat u hiermee akkoord?")
-                .setCancelable(true)
-                .setPositiveButton("Ja") { dialogInterface, it ->
-                    finish()
-                }
-                .setNegativeButton("Nee") { dialogInterface, it ->
-                    dialogInterface.cancel()
-                }
-                .show()
+            if (naamGebruiker.text.toString().trim().isEmpty()) {
+                naamGebruiker.error = "Verplicht"
+            }
+            if (controleur.text.toString().trim().isEmpty()) {
+                controleur.error = "Verplicht"
+            }
+            if (kenteken.text.toString().trim().isEmpty()) {
+                kenteken.error = "Verplicht"
+            }
+            if (textView.text.toString().trim().isEmpty()) {
+                textView.error = "Verplicht"
+            } else if (naamGebruiker.text.toString().trim()
+                    .isNotEmpty() || controleur.text.toString().trim()
+                    .isNotEmpty() || kenteken.text.toString().trim().isNotEmpty()
+            ) {
+                //Voor AVG check
+                builder.setTitle("Toestemming verwerken persoongegevens")
+                    .setMessage("Uw gegevens worden 3 maanden in ons systeem bewaard, gaat u hiermee akkoord?")
+                    .setCancelable(true)
+                    .setPositiveButton("Ja") { dialogInterface, it ->
+                        finish()
+                    }
+                    .setNegativeButton("Nee") { dialogInterface, it ->
+                        dialogInterface.cancel()
+                    }
+                    .show()
+            }
         }
     }
 
@@ -130,15 +156,15 @@ class qSecondActivity : AppCompatActivity() {
                     position = 0
 
                     if (previosBtn.isInvisible) {
-                        previosBtn.setVisibility(View.VISIBLE)
+                        previosBtn.visibility = View.VISIBLE
                     } else {
-                        previosBtn.setVisibility(View.INVISIBLE)
+                        previosBtn.visibility = View.INVISIBLE
                     }
 
                     if (nextBtn.isInvisible) {
-                        nextBtn.setVisibility(View.VISIBLE)
+                        nextBtn.visibility = View.VISIBLE
                     } else {
-                        nextBtn.setVisibility(View.INVISIBLE)
+                        nextBtn.visibility = View.INVISIBLE
                     }
                 } else {
                     val imageUri = data.data

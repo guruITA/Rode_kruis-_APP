@@ -110,9 +110,10 @@ class FirstActivity : AppCompatActivity() {
             }
             if (textView.text.toString().trim().isEmpty()) {
                 textView.error = "Verplicht"
-            }
-            else if (naamGebruiker.text.toString().trim().isNotEmpty() || controleur.text.toString().trim().isNotEmpty() || kenteken.text.toString().trim().isNotEmpty())
-            {
+            } else if (naamGebruiker.text.toString().trim()
+                    .isNotEmpty() || controleur.text.toString().trim()
+                    .isNotEmpty() || kenteken.text.toString().trim().isNotEmpty()
+            ) {
                 //Voor AVG check
                 builder.setTitle("Toestemming verwerken persoongegevens")
                     .setMessage("Uw gegevens worden 3 maanden in ons systeem bewaard, gaat u hiermee akkoord?")

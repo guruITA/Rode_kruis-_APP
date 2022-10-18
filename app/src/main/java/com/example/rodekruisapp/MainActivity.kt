@@ -11,7 +11,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        //ambulance -> secondActivity
+        //ambulance -> firstActivity
         val auto: Button = findViewById(R.id.auto)
         auto.setOnClickListener {
             val intent = Intent(this, FirstActivity::class.java)
@@ -22,6 +22,13 @@ class MainActivity : AppCompatActivity() {
         val ambulance: Button = findViewById(R.id.ambulance)
         ambulance.setOnClickListener {
             val intent = Intent(this, SecondActivity::class.java)
+            startActivity(intent)
+        }
+
+        //gator -> thirdActivity
+        val gator: Button = findViewById(R.id.gator)
+        gator.setOnClickListener {
+            val intent = Intent(this, ThirdActivity::class.java)
             startActivity(intent)
         }
 
