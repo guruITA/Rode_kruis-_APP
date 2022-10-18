@@ -178,7 +178,7 @@
 
             <Button
                 android:id="@+id/previousBtn"
-                android:layout_width="wrap_content"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:text="Vorige"
                 android:visibility="invisible"
@@ -188,13 +188,15 @@
 
             <Button
                 android:id="@+id/nextBtn"
-                android:layout_width="wrap_content"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
                 android:text="Volgende"
                 android:visibility="invisible"
                 app:layout_constraintEnd_toEndOf="parent"
-                tools:ignore="MissingConstraints" />
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="16dp" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -19,7 +19,6 @@ class FirstActivity : AppCompatActivity() {
     lateinit var naamGebruiker: EditText
     lateinit var controleur: EditText
     lateinit var kenteken: EditText
-    lateinit var datum: EditText
 
     //huidige tijd
     lateinit var calendar: Calendar
@@ -156,15 +155,15 @@ class FirstActivity : AppCompatActivity() {
                     position = 0
 
                     if (previosBtn.isInvisible) {
-                        previosBtn.setVisibility(View.VISIBLE)
+                        previosBtn.visibility = View.VISIBLE
                     } else {
-                        previosBtn.setVisibility(View.INVISIBLE)
+                        previosBtn.visibility = View.INVISIBLE
                     }
 
                     if (nextBtn.isInvisible) {
-                        nextBtn.setVisibility(View.VISIBLE)
+                        nextBtn.visibility = View.VISIBLE
                     } else {
-                        nextBtn.setVisibility(View.INVISIBLE)
+                        nextBtn.visibility = View.INVISIBLE
                     }
                 } else {
                     val imageUri = data.data
