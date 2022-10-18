@@ -13,7 +13,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
 
-class SecondActivity : AppCompatActivity() {
+class ThirdActivity : AppCompatActivity() {
 
     //Edit text kan niet leeg zijn
     lateinit var naamGebruiker: EditText
@@ -42,11 +42,11 @@ class SecondActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_second)
+        setContentView(R.layout.activity_third)
 
         //naam en terug naar main pagina
         val actionBar = supportActionBar
-        actionBar!!.title = "Ambulance"
+        actionBar!!.title = "Gator"
         actionBar.setDisplayHomeAsUpEnabled(true)
 
         //Edit text kan niet leeg zijn
