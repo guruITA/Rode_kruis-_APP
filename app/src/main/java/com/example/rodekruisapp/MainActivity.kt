@@ -32,6 +32,24 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        val quad: Button = findViewById(R.id.quad)
+        quad.setOnClickListener {
+            val intent = Intent(this, FourthActivity::class.java)
+            startActivity(intent)
+        }
+
+        val fiets: Button = findViewById(R.id.fiets)
+        fiets.setOnClickListener {
+            val intent = Intent(this, FifthActivity::class.java)
+            startActivity(intent)
+        }
+
+        val aanhanger: Button = findViewById(R.id.aanhanger)
+        aanhanger.setOnClickListener {
+            val intent = Intent(this, SixthActivity::class.java)
+            startActivity(intent)
+        }
+
     }
 }
 
