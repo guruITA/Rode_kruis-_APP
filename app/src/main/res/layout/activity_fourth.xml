@@ -19,7 +19,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="16dp"
             android:gravity="center_vertical"
-            android:text="Uitgifte auto"
+            android:text="Uitgifte quad"
             android:textSize="20dp" />
 
         <EditText

@@ -13,16 +13,29 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.RodeKruisAPP"
         tools:targetApi="31">
-        <activity
-            android:name=".ThirdActivity"
-            android:exported="false"
-            android:parentActivityName=".MainActivity" />
+
         <activity
             android:name=".FirstActivity"
             android:exported="false"
             android:parentActivityName=".MainActivity" />
         <activity
             android:name=".SecondActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".ThirdActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".FourthActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".FifthActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".SixthActivity"
             android:exported="false"
             android:parentActivityName=".MainActivity" />
         <activity

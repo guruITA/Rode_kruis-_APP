@@ -1,3 +1,5 @@
+//Ambulance
+
 package com.example.rodekruisapp
 
 import android.app.Activity
@@ -110,9 +112,10 @@ class SecondActivity : AppCompatActivity() {
             }
             if (textView.text.toString().trim().isEmpty()) {
                 textView.error = "Verplicht"
-            } else if (naamGebruiker.text.toString().trim()
-                    .isNotEmpty() || controleur.text.toString().trim()
-                    .isNotEmpty() || kenteken.text.toString().trim().isNotEmpty()
+            } else if (naamGebruiker.text.toString().trim().isNotEmpty() ||
+                        controleur.text.toString().trim().isNotEmpty() ||
+                        kenteken.text.toString().trim().isNotEmpty() ||
+                        textView.text.toString().trim().isNotEmpty()
             ) {
                 //Voor AVG check
                 builder.setTitle("Toestemming verwerken persoongegevens")

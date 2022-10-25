@@ -48,7 +48,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:background="@color/white"
-            android:hint="Uitgifte personenauto kenteken"
+            android:hint="Kenteken"
             android:inputType="text"
             android:padding="5dp" />
 

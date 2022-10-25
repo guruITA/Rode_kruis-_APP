@@ -1,4 +1,4 @@
-//Gator
+//Fiets
 
 package com.example.rodekruisapp
 
@@ -15,7 +15,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
 
-class ThirdActivity : AppCompatActivity() {
+class FifthActivity : AppCompatActivity() {
 
     //Edit text kan niet leeg zijn
     lateinit var naamGebruiker: EditText
@@ -44,11 +44,11 @@ class ThirdActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_third)
+        setContentView(R.layout.activity_fifth)
 
         //naam en terug naar main pagina
         val actionBar = supportActionBar
-        actionBar!!.title = "Gator"
+        actionBar!!.title = "Fiets"
         actionBar.setDisplayHomeAsUpEnabled(true)
 
         //Edit text kan niet leeg zijn
@@ -113,9 +113,9 @@ class ThirdActivity : AppCompatActivity() {
             if (textView.text.toString().trim().isEmpty()) {
                 textView.error = "Verplicht"
             } else if (naamGebruiker.text.toString().trim().isNotEmpty() ||
-                        controleur.text.toString().trim().isNotEmpty() ||
-                        kenteken.text.toString().trim().isNotEmpty() ||
-                        textView.text.toString().trim().isNotEmpty()
+                controleur.text.toString().trim().isNotEmpty() ||
+                kenteken.text.toString().trim().isNotEmpty() ||
+                textView.text.toString().trim().isNotEmpty()
             ) {
                 //Voor AVG check
                 builder.setTitle("Toestemming verwerken persoongegevens")
