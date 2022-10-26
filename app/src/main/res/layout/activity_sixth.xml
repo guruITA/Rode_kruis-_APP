@@ -18,6 +18,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="16dp"
+            android:layout_marginBottom="20dp"
             android:gravity="center_vertical"
             android:text="Uitgifte aanhanger"
             android:textSize="20dp" />
@@ -28,6 +29,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:background="@color/white"
+            android:textColor="@color/black"
             android:hint="Naam gebruiker"
             android:inputType="text"
             android:padding="5dp" />
@@ -40,6 +42,7 @@
             android:background="@color/white"
             android:hint="Naam RKLC"
             android:inputType="text"
+            android:textColor="@color/black"
             android:padding="5dp" />
 
         <EditText
@@ -50,6 +53,7 @@
             android:background="@color/white"
             android:hint="Kenteken"
             android:inputType="text"
+            android:textColor="@color/black"
             android:padding="5dp" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -60,14 +64,13 @@
 
             <EditText
                 android:id="@+id/datum"
-                android:layout_width="270dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
                 android:editable="false"
                 android:hint="Datum"
                 android:padding="5dp"
-                app:layout_constraintEnd_toStartOf="@+id/btndatum"
-                app:layout_constraintHorizontal_bias="0.0"
+                android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="parent"
                 tools:ignore="MissingConstraints"
                 tools:layout_editor_absoluteY="0dp" />
@@ -78,6 +81,7 @@
                 android:layout_height="40dp"
                 android:text="Huidige"
                 android:textAllCaps="false"
+                android:layout_marginRight="5dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 tools:ignore="MissingConstraints"
                 tools:layout_editor_absoluteY="-2dp" />

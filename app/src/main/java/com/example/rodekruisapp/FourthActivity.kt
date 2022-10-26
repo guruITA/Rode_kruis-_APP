@@ -26,7 +26,7 @@ class FourthActivity : AppCompatActivity() {
     lateinit var calendar: Calendar
     lateinit var simpleDateFormat: SimpleDateFormat
     lateinit var date: String
-    lateinit var textView: TextView
+    lateinit var datum: TextView
     lateinit var button: Button
 
     //foto uploaden
@@ -57,12 +57,12 @@ class FourthActivity : AppCompatActivity() {
         kenteken = findViewById(R.id.kenteken)
 
         //huidige tijd
-        textView = findViewById(R.id.datum)
+        datum = findViewById(R.id.datum)
         button = findViewById(R.id.btndatum)
         calendar = Calendar.getInstance()
         simpleDateFormat = SimpleDateFormat("dd-MM-yyyy HH:mm:ss")
         date = simpleDateFormat.format(calendar.time)
-        button.setOnClickListener { textView.text = date }
+        button.setOnClickListener { datum.text = date }
 
         //foto uploaden
         previosBtn = findViewById(R.id.previousBtn)
@@ -101,22 +101,22 @@ class FourthActivity : AppCompatActivity() {
         var builder = AlertDialog.Builder(this)
 
         verstuur.setOnClickListener {
-            if (naamGebruiker.text.toString().trim().isEmpty()) {
-                naamGebruiker.error = "Verplicht"
-            }
-            if (controleur.text.toString().trim().isEmpty()) {
-                controleur.error = "Verplicht"
-            }
-            if (kenteken.text.toString().trim().isEmpty()) {
-                kenteken.error = "Verplicht"
-            }
-            if (textView.text.toString().trim().isEmpty()) {
-                textView.error = "Verplicht"
-            } else if (naamGebruiker.text.toString().trim().isNotEmpty() ||
-                controleur.text.toString().trim().isNotEmpty() ||
-                kenteken.text.toString().trim().isNotEmpty() ||
-                textView.text.toString().trim().isNotEmpty()
+            if (naamGebruiker.text.toString().trim().isEmpty() ||
+                controleur.text.toString().trim().isEmpty() ||
+                kenteken.text.toString().trim().isEmpty() ||
+                datum.text.toString().trim().isEmpty()
             ) {
+                if (naamGebruiker.text.toString().trim().isEmpty()) {
+                    naamGebruiker.error = "Verplicht"
+                }
+                if (controleur.text.toString().trim().isEmpty()) {
+                    controleur.error = "Verplicht"
+                }
+                if (kenteken.text.toString().trim().isEmpty()) {
+                    kenteken.error = "Verplicht"
+                }
+            } else {
+
                 //Voor AVG check
                 builder.setTitle("Toestemming verwerken persoongegevens")
                     .setMessage("Uw gegevens worden 3 maanden in ons systeem bewaard, gaat u hiermee akkoord?")
@@ -128,6 +128,7 @@ class FourthActivity : AppCompatActivity() {
                         dialogInterface.cancel()
                     }
                     .show()
+
             }
         }
     }
