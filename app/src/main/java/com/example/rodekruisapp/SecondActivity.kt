@@ -1,7 +1,10 @@
-//Ambulance
+//Auto
+
+@file:Suppress("DEPRECATION")
 
 package com.example.rodekruisapp
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.AlertDialog
 import android.content.Intent
@@ -10,7 +13,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.isInvisible
+import androidx.core.view.isGone
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
@@ -23,25 +26,26 @@ class SecondActivity : AppCompatActivity() {
     lateinit var kenteken: EditText
 
     //huidige tijd
-    lateinit var calendar: Calendar
-    lateinit var simpleDateFormat: SimpleDateFormat
-    lateinit var date: String
-    lateinit var datum: TextView
+    private lateinit var calendar: Calendar
+    private lateinit var simpleDateFormat: SimpleDateFormat
+    private lateinit var date: String
+    private lateinit var datum: TextView
     lateinit var button: Button
 
     //foto uploaden
-    lateinit var pickIImageSwitcher: ImageSwitcher
-    lateinit var previosBtn: Button
+    private lateinit var pickIImageSwitcher: ImageSwitcher
+    private lateinit var previosBtn: Button
     lateinit var nextBtn: Button
     lateinit var pickImageBtn: Button
 
     private var images: ArrayList<Uri?>? = null
     private var position = 0
-    private val PICK_IMAGES_CODE = 0
+    private val pickimagescode = 0
 
     //Voor AVG check
     lateinit var verstuur: Button
 
+    @SuppressLint("SimpleDateFormat")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_second)
@@ -98,7 +102,7 @@ class SecondActivity : AppCompatActivity() {
 
         //Voor AVG check
         verstuur = findViewById(R.id.verstuur)
-        var builder = AlertDialog.Builder(this)
+        val builder = AlertDialog.Builder(this)
 
         verstuur.setOnClickListener {
             if (naamGebruiker.text.toString().trim().isEmpty() ||
@@ -121,12 +125,8 @@ class SecondActivity : AppCompatActivity() {
                 builder.setTitle("Toestemming verwerken persoongegevens")
                     .setMessage("Uw gegevens worden 3 maanden in ons systeem bewaard, gaat u hiermee akkoord?")
                     .setCancelable(true)
-                    .setPositiveButton("Ja") { dialogInterface, it ->
-                        finish()
-                    }
-                    .setNegativeButton("Nee") { dialogInterface, it ->
-                        dialogInterface.cancel()
-                    }
+                    .setPositiveButton("Ja") { dialogInterface, to -> finish() }
+                    .setNegativeButton("Nee") { dialogInterface, to -> dialogInterface.cancel() }
                     .show()
 
             }
@@ -139,13 +139,14 @@ class SecondActivity : AppCompatActivity() {
         intent.type = "image/*"
         intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true)
         intent.action = Intent.ACTION_GET_CONTENT
-        startActivityForResult(Intent.createChooser(intent, "Select image(s)"), PICK_IMAGES_CODE)
+        startActivityForResult(Intent.createChooser(intent, "Select image(s)"), pickimagescode)
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        if (requestCode == PICK_IMAGES_CODE) {
+        if (requestCode == pickimagescode) {
 
             if (resultCode == Activity.RESULT_OK) {
 
@@ -159,17 +160,15 @@ class SecondActivity : AppCompatActivity() {
                     pickIImageSwitcher.setImageURI(images!![0])
                     position = 0
 
-                    if (previosBtn.isInvisible) {
+                    //Dit zijn om de vorige en volgende foto's te bekijken. Ze zijn zichtbaar als meer dan een foto gaat selecteren
+                    if (previosBtn.isGone || nextBtn.isGone) {
                         previosBtn.visibility = View.VISIBLE
-                    } else {
-                        previosBtn.visibility = View.INVISIBLE
-                    }
-
-                    if (nextBtn.isInvisible) {
                         nextBtn.visibility = View.VISIBLE
                     } else {
-                        nextBtn.visibility = View.INVISIBLE
+                        previosBtn.visibility = View.GONE
+                        nextBtn.visibility = View.GONE
                     }
+
                 } else {
                     val imageUri = data.data
                     pickIImageSwitcher.setImageURI(imageUri)
