@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true" >
+    android:fillViewport="true">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -13,16 +13,16 @@
         android:orientation="vertical"
         tools:context=".FirstActivity">
 
-        <EditText
+        <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/naamGebruiker"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:background="@color/white"
-            android:textColor="@color/black"
             android:hint="Naam gebruiker"
             android:inputType="text"
-            android:padding="5dp" />
+            android:padding="5dp"
+            android:textColor="@color/black" />
 
         <EditText
             android:id="@+id/controleur"
@@ -32,8 +32,8 @@
             android:background="@color/white"
             android:hint="Naam RKLC"
             android:inputType="text"
-            android:textColor="@color/black"
-            android:padding="5dp" />
+            android:padding="5dp"
+            android:textColor="@color/black" />
 
         <EditText
             android:id="@+id/kenteken"
@@ -43,8 +43,8 @@
             android:background="@color/white"
             android:hint="Kenteken"
             android:inputType="text"
-            android:textColor="@color/black"
-            android:padding="5dp" />
+            android:padding="5dp"
+            android:textColor="@color/black" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -60,19 +60,19 @@
                 android:hint="Datum"
                 android:padding="5dp"
                 android:textColor="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 tools:ignore="MissingConstraints" />
 
             <Button
                 android:id="@+id/btndatum"
                 android:layout_width="95dp"
-                android:layout_height="40dp"
+                android:layout_height="38dp"
                 android:layout_marginRight="5dp"
                 android:text="Huidige"
+                android:textSize="13dp"
                 android:textAllCaps="false"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="MissingConstraints" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -156,11 +156,32 @@
             app:layout_constraintEnd_toEndOf="parent"
             tools:ignore="MissingConstraints" />
 
-        <ImageSwitcher
-            android:id="@+id/imageSwitcher"
+        <TextView
+            android:id="@+id/error"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Geen foto's geselecteerd"
+            android:textColor="@color/design_default_color_error"
+            android:visibility="gone"
+            />
+
+        <TextView
+            android:id="@+id/re"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:text="Er zijn geen foto's geselecteerd"
+            android:textColor="@color/design_default_color_error"
+            android:visibility="gone"
+            />
+
+        <ImageSwitcher
+            android:id="@+id/imageSwitcher"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            tools:ignore="MissingConstraints"
             tools:srcCompat="@tools:sample/avatars" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -174,10 +195,8 @@
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:text="Vorige"
-                android:visibility="invisible"
-                tools:ignore="MissingConstraints"
-                tools:layout_editor_absoluteX="16dp"
-                tools:layout_editor_absoluteY="16dp" />
+                android:visibility="gone"
+                tools:ignore="MissingConstraints" />
 
             <Button
                 android:id="@+id/nextBtn"
@@ -185,11 +204,9 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
                 android:text="Volgende"
-                android:visibility="invisible"
+                android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
-                tools:ignore="MissingConstraints"
-                tools:layout_editor_absoluteX="16dp"
-                tools:layout_editor_absoluteY="16dp" />
+                tools:ignore="MissingConstraints" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
