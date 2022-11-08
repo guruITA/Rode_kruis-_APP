@@ -23,6 +23,14 @@ class FirstActivity : AppCompatActivity() {
     lateinit var naamGebruiker: EditText
     lateinit var controleur: EditText
     lateinit var kenteken: EditText
+    lateinit var email: EditText
+
+    //checkboxes
+    lateinit var checkKabel: CheckBox
+    lateinit var checkNummerplaten: CheckBox
+    lateinit var checkDieselslot: CheckBox
+    lateinit var checkFietsendrager: CheckBox
+    lateinit var checkRijplaten: CheckBox
 
     //huidige tijd
     private lateinit var calendar: Calendar
@@ -55,9 +63,17 @@ class FirstActivity : AppCompatActivity() {
         actionBar.setDisplayHomeAsUpEnabled(true)
 
         //Edit text kan niet leeg zijn
+        email = findViewById(R.id.email)
         naamGebruiker = findViewById(R.id.naamGebruiker)
         controleur = findViewById(R.id.controleur)
         kenteken = findViewById(R.id.kenteken)
+
+        //checkboxes
+        checkKabel = findViewById(R.id.checkKabel)
+        checkNummerplaten = findViewById(R.id.checkNummerplaten)
+        checkDieselslot = findViewById(R.id.checkDieselslot)
+        checkFietsendrager = findViewById(R.id.checkFietsendrager)
+        checkRijplaten = findViewById(R.id.checkRijplaten)
 
         //huidige tijd
         datum = findViewById(R.id.datum)
@@ -126,7 +142,7 @@ class FirstActivity : AppCompatActivity() {
                 builder.setTitle("Toestemming verwerken persoongegevens")
                     .setMessage("Uw gegevens worden 3 maanden in ons systeem bewaard, gaat u hiermee akkoord?")
                     .setCancelable(true)
-                        //sendMail()
+                    //sendMail()
                     .setPositiveButton("Ja") { dialogInterface, to -> sendMail().to(finish()) }
                     .setNegativeButton("Nee") { dialogInterface, to -> dialogInterface.cancel() }
                     .show()
@@ -183,28 +199,35 @@ class FirstActivity : AppCompatActivity() {
     //Gegevens sturen naar email
     private fun sendMail() {
 
+        val recipientList = email!!.text.toString()
+        val recipients = recipientList.split(",".toRegex()).dropLastWhile { it.isEmpty() }
+            .toTypedArray()
+
         val naamGebruiker = naamGebruiker.text.toString()
         val controleur = controleur.text.toString()
         val kenteken = kenteken.text.toString()
         val datum = datum.text.toString()
-        val veld = arrayListOf("Naam: $naamGebruiker", "Controleur: $controleur", "Kenteken: $kenteken", "Datum: $datum")
+        val checkKabel = checkKabel.text.toString()
+        val checkNummerplaten = checkNummerplaten.text.toString()
+        val checkDieselslot = checkDieselslot.text.toString()
+        val checkFietsendrager = checkFietsendrager.text.toString()
+        val checkRijplaten = checkRijplaten.text.toString()
+
+        val veld = arrayListOf("Naam: $naamGebruiker", "Controleur: $controleur", "Kenteken: $kenteken", "Datum: $datum", checkKabel)
 
         val intent = Intent(Intent.ACTION_SEND)
         intent.putExtra(Intent.EXTRA_SUBJECT, "Uitgifte auto")
-        val to = arrayOf("2087628@talnet.nl")
-        intent.putExtra(Intent.EXTRA_EMAIL, to)
+        intent.putExtra(Intent.EXTRA_EMAIL, recipients);
 
         val sb = StringBuilder()
         for (a in veld) {
-                sb.append(a)
-                sb.append("\n")
+            sb.append(a)
+            sb.append("\n")
         }
 
         intent.putExtra(Intent.EXTRA_TEXT, sb.toString())
-        intent.putParcelableArrayListExtra(Intent.EXTRA_STREAM, images)
-        intent.type = "image/*"
 
-        intent.type = "mailto:"
+        intent.type = "mailto/rfc822"
         startActivity(Intent.createChooser(intent, "Choose an email client"))
 
     }
