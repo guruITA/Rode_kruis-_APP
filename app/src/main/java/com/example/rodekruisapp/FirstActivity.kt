@@ -16,7 +16,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isGone
 import java.text.SimpleDateFormat
 import java.util.*
-import kotlin.collections.ArrayList
 
 class FirstActivity : AppCompatActivity() {
 
@@ -64,7 +63,7 @@ class FirstActivity : AppCompatActivity() {
         datum = findViewById(R.id.datum)
         button = findViewById(R.id.btndatum)
         calendar = Calendar.getInstance()
-        simpleDateFormat = SimpleDateFormat("dd-MM-yyyy HH:mm:ss")
+        simpleDateFormat = SimpleDateFormat("dd-MM-yyyy HH:mm")
         date = simpleDateFormat.format(calendar.time)
         button.setOnClickListener { datum.text = date }
 
@@ -105,6 +104,7 @@ class FirstActivity : AppCompatActivity() {
         val builder = AlertDialog.Builder(this)
 
         verstuur.setOnClickListener {
+
             if (naamGebruiker.text.toString().trim().isEmpty() ||
                 controleur.text.toString().trim().isEmpty() ||
                 kenteken.text.toString().trim().isEmpty() ||
@@ -126,7 +126,8 @@ class FirstActivity : AppCompatActivity() {
                 builder.setTitle("Toestemming verwerken persoongegevens")
                     .setMessage("Uw gegevens worden 3 maanden in ons systeem bewaard, gaat u hiermee akkoord?")
                     .setCancelable(true)
-                    .setPositiveButton("Ja") { dialogInterface, to -> finish() }
+                        //sendMail()
+                    .setPositiveButton("Ja") { dialogInterface, to -> sendMail().to(finish()) }
                     .setNegativeButton("Nee") { dialogInterface, to -> dialogInterface.cancel() }
                     .show()
 
@@ -170,7 +171,6 @@ class FirstActivity : AppCompatActivity() {
                         nextBtn.visibility = View.GONE
                     }
 
-
                 } else {
                     val imageUri = data.data
                     pickIImageSwitcher.setImageURI(imageUri)
@@ -178,5 +178,34 @@ class FirstActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    //Gegevens sturen naar email
+    private fun sendMail() {
+
+        val naamGebruiker = naamGebruiker.text.toString()
+        val controleur = controleur.text.toString()
+        val kenteken = kenteken.text.toString()
+        val datum = datum.text.toString()
+        val veld = arrayListOf("Naam: $naamGebruiker", "Controleur: $controleur", "Kenteken: $kenteken", "Datum: $datum")
+
+        val intent = Intent(Intent.ACTION_SEND)
+        intent.putExtra(Intent.EXTRA_SUBJECT, "Uitgifte auto")
+        val to = arrayOf("2087628@talnet.nl")
+        intent.putExtra(Intent.EXTRA_EMAIL, to)
+
+        val sb = StringBuilder()
+        for (a in veld) {
+                sb.append(a)
+                sb.append("\n")
+        }
+
+        intent.putExtra(Intent.EXTRA_TEXT, sb.toString())
+        intent.putParcelableArrayListExtra(Intent.EXTRA_STREAM, images)
+        intent.type = "image/*"
+
+        intent.type = "mailto:"
+        startActivity(Intent.createChooser(intent, "Choose an email client"))
+
     }
 }
