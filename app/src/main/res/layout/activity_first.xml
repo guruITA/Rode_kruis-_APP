@@ -8,7 +8,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
         android:orientation="vertical"
         tools:context=".FirstActivity">
@@ -20,9 +20,11 @@
             android:layout_margin="10dp"
             android:background="@color/white"
             android:inputType="text"
-            android:text="2087628@talnet.nl"
+            android:text="@string/_2087628_talnet_nl"
             android:padding="5dp"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:visibility="gone"
+            tools:ignore="LabelFor,TextFields" />
 
         <EditText
             android:id="@+id/naamGebruiker"
@@ -30,7 +32,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:background="@color/white"
-            android:hint="Naam gebruiker"
+            android:hint="@string/naam_gebruiker"
             android:inputType="text"
             android:padding="5dp"
             android:textColor="@color/black" />
@@ -41,7 +43,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:background="@color/white"
-            android:hint="Naam RKLC"
+            android:hint="@string/naam_rklc"
             android:inputType="text"
             android:padding="5dp"
             android:textColor="@color/black" />
@@ -52,7 +54,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:background="@color/white"
-            android:hint="Kenteken"
+            android:hint="@string/kenteken"
             android:inputType="text"
             android:padding="5dp"
             android:textColor="@color/black" />
@@ -68,20 +70,20 @@
                 android:layout_height="wrap_content"
                 android:background="@color/white"
                 android:editable="false"
-                android:hint="Datum"
+                android:hint="@string/datum"
                 android:padding="5dp"
                 android:textColor="@color/black"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                tools:ignore="MissingConstraints" />
+                tools:ignore="Deprecated,MissingConstraints" />
 
             <Button
                 android:id="@+id/btndatum"
                 android:layout_width="95dp"
                 android:layout_height="38dp"
-                android:layout_marginRight="5dp"
-                android:text="Huidige"
-                android:textSize="13dp"
+                android:layout_marginEnd="5dp"
+                android:text="@string/vandaag"
+                android:textSize="12sp"
                 android:textAllCaps="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 tools:ignore="MissingConstraints" />
@@ -95,8 +97,8 @@
             android:layout_marginTop="16dp"
             android:layout_marginBottom="20dp"
             android:gravity="center_vertical"
-            android:text="Accessories"
-            android:textSize="20dp" />
+            android:text="@string/accessories"
+            android:textSize="20sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -107,13 +109,13 @@
                 android:id="@+id/checkKabel"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:text="Kabel" />
+                android:text="@string/kabel"/>
 
             <CheckBox
                 android:id="@+id/checkNummerplaten"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:text="Nummerplaten" />
+                android:text="@string/nummerplaten"/>
 
         </LinearLayout>
 
@@ -126,13 +128,13 @@
                 android:id="@+id/checkDieselslot"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:text="Dieselslot" />
+                android:text="@string/dieselslot"/>
 
             <CheckBox
                 android:id="@+id/checkFietsendrager"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:text="Fietsendrager" />
+                android:text="@string/fietsendrager"/>
 
         </LinearLayout>
 
@@ -145,13 +147,25 @@
                 android:id="@+id/checkRijplaten"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:text="Rijplaten" />
+                android:text="@string/rijplaten"/>
 
             <Space
                 android:layout_width="150dp"
                 android:layout_height="wrap_content" />
 
         </LinearLayout>
+
+
+        <EditText
+            android:id="@+id/diverse"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@color/white"
+            android:hint="@string/diversen"
+            android:inputType="text"
+            android:padding="5dp"
+            android:textColor="@color/black" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -160,15 +174,15 @@
             android:layout_marginTop="16dp"
             android:layout_marginBottom="20dp"
             android:gravity="center_vertical"
-            android:text="Foto uploaden"
-            android:textSize="20dp" />
+            android:text="@string/foto_s_uploaden"
+            android:textSize="20sp" />
 
         <Button
             android:id="@+id/pickImageBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Selecteer foto's"
+            android:text="@string/selecteer_foto_s"
             app:layout_constraintEnd_toEndOf="parent"
             tools:ignore="MissingConstraints" />
 
@@ -177,7 +191,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Geen foto's geselecteerd"
+            android:text="@string/geen_foto_s_geselecteerd"
             android:textColor="@color/design_default_color_error"
             android:visibility="gone"
             />
@@ -187,7 +201,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Er zijn geen foto's geselecteerd"
+            android:text="@string/er_zijn_geen_foto_s_geselecteerd"
             android:textColor="@color/design_default_color_error"
             android:visibility="gone"
             />
@@ -210,7 +224,7 @@
                 android:id="@+id/previousBtn"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:text="Vorige"
+                android:text="@string/vorige"
                 android:visibility="gone"
                 tools:ignore="MissingConstraints" />
 
@@ -219,7 +233,7 @@
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
-                android:text="Volgende"
+                android:text="@string/volgende"
                 android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
                 tools:ignore="MissingConstraints" />
@@ -231,7 +245,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
-            android:text="Versturen"
+            android:text="@string/versturen"
             android:textAllCaps="false" />
 
     </LinearLayout>
