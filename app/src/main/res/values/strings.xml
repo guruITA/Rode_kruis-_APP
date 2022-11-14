@@ -1,3 +1,23 @@
 <resources>
     <string name="app_name">Rode Kruis</string>
+    <string name="_2087628_talnet_nl">2087628@talnet.nl</string>
+    <string name="naam_gebruiker">Naam gebruiker</string>
+    <string name="naam_rklc">Naam RKLC</string>
+    <string name="kenteken">Kenteken</string>
+    <string name="datum">Datum</string>
+    <string name="vandaag">Vandaag</string>
+    <string name="accessories">Accessories</string>
+    <string name="kabel">Kabel</string>
+    <string name="nummerplaten">Nummerplaten</string>
+    <string name="dieselslot">Dieselslot</string>
+    <string name="fietsendrager">Fietsendrager</string>
+    <string name="rijplaten">Rijplaten</string>
+    <string name="foto_s_uploaden">Foto\'s uploaden</string>
+    <string name="selecteer_foto_s">Selecteer foto\'s</string>
+    <string name="geen_foto_s_geselecteerd">Geen foto\'s geselecteerd</string>
+    <string name="er_zijn_geen_foto_s_geselecteerd">Er zijn geen foto\'s geselecteerd</string>
+    <string name="volgende">Volgende</string>
+    <string name="vorige">Vorige</string>
+    <string name="versturen">Versturen</string>
+    <string name="diversen">Diversen</string>
 </resources>

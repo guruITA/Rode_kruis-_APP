@@ -17,20 +17,21 @@ import androidx.core.view.isGone
 import java.text.SimpleDateFormat
 import java.util.*
 
+
 class FirstActivity : AppCompatActivity() {
 
     //Edit text kan niet leeg zijn
     lateinit var naamGebruiker: EditText
     lateinit var controleur: EditText
     lateinit var kenteken: EditText
-    lateinit var email: EditText
+    private lateinit var email: EditText
 
     //checkboxes
-    lateinit var checkKabel: CheckBox
-    lateinit var checkNummerplaten: CheckBox
-    lateinit var checkDieselslot: CheckBox
-    lateinit var checkFietsendrager: CheckBox
-    lateinit var checkRijplaten: CheckBox
+    private lateinit var checkKabel: CheckBox
+    private lateinit var checkNummerplaten: CheckBox
+    private lateinit var checkDieselslot: CheckBox
+    private lateinit var checkFietsendrager: CheckBox
+    private lateinit var checkRijplaten: CheckBox
 
     //huidige tijd
     private lateinit var calendar: Calendar
@@ -199,36 +200,79 @@ class FirstActivity : AppCompatActivity() {
     //Gegevens sturen naar email
     private fun sendMail() {
 
-        val recipientList = email!!.text.toString()
-        val recipients = recipientList.split(",".toRegex()).dropLastWhile { it.isEmpty() }
-            .toTypedArray()
+        val recipientList = email.text.toString()
+        val recipients =
+            recipientList.split(",".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()
 
         val naamGebruiker = naamGebruiker.text.toString()
         val controleur = controleur.text.toString()
         val kenteken = kenteken.text.toString()
         val datum = datum.text.toString()
-        val checkKabel = checkKabel.text.toString()
-        val checkNummerplaten = checkNummerplaten.text.toString()
-        val checkDieselslot = checkDieselslot.text.toString()
-        val checkFietsendrager = checkFietsendrager.text.toString()
-        val checkRijplaten = checkRijplaten.text.toString()
 
-        val veld = arrayListOf("Naam: $naamGebruiker", "Controleur: $controleur", "Kenteken: $kenteken", "Datum: $datum", checkKabel)
+//        val checkKabel = checkKabel.isChecked
+//        val checkNummerplaten = checkNummerplaten.isChecked
+//        val checkDieselslot = checkDieselslot.isChecked
+//        val checkFietsendrager = checkFietsendrager.isChecked
+//        val checkRijplaten = checkRijplaten.isChecked
 
-        val intent = Intent(Intent.ACTION_SEND)
+        val veld = arrayListOf(
+            "Naam: $naamGebruiker",
+            "Controleur: $controleur",
+            "Kenteken: $kenteken",
+            "Datum: $datum"
+        )
+
+        val intent = Intent(Intent.ACTION_SEND_MULTIPLE)
         intent.putExtra(Intent.EXTRA_SUBJECT, "Uitgifte auto")
-        intent.putExtra(Intent.EXTRA_EMAIL, recipients);
+        intent.putExtra(Intent.EXTRA_EMAIL, recipients)
 
         val sb = StringBuilder()
+        sb.append("Gegevens:", "\n")
         for (a in veld) {
             sb.append(a)
             sb.append("\n")
         }
 
-        intent.putExtra(Intent.EXTRA_TEXT, sb.toString())
+        sb.append("\n")
+        sb.append("Meegenomen accessories:", "\n")
 
-        intent.type = "mailto/rfc822"
-        startActivity(Intent.createChooser(intent, "Choose an email client"))
+        var r: String = ""
+
+        if (checkKabel.isChecked) {
+            r += checkKabel.text.toString()
+            r = "$r \n"
+        }
+
+        if (checkNummerplaten.isChecked) {
+            r += checkNummerplaten.text.toString()
+            r = "$r \n"
+        }
+
+        if (checkFietsendrager.isChecked) {
+            r += checkFietsendrager.text.toString()
+            r = "$r \n"
+        }
+
+        if (checkDieselslot.isChecked) {
+            r += checkDieselslot.text.toString()
+            r = "$r \n"
+        }
+
+        if (checkRijplaten.isChecked) {
+            r += checkRijplaten.text.toString()
+            r = "$r \n"
+        }
+
+        for (b in r) {
+            sb.append(b)
+        }
+
+        intent.putExtra(Intent.EXTRA_TEXT, sb.toString())
+        intent.putParcelableArrayListExtra(Intent.EXTRA_STREAM, images)
+        intent.type = "image/*"
+
+        intent.type = "mailto/*"
+        startActivity(Intent.createChooser(intent, "Kies een e-mailclient"))
 
     }
 }
