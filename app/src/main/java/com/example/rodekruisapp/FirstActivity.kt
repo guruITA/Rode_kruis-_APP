@@ -45,7 +45,6 @@ class FirstActivity : AppCompatActivity() {
     private lateinit var previosBtn: Button
     lateinit var nextBtn: Button
     lateinit var pickImageBtn: Button
-
     private var images: ArrayList<Uri?>? = null
     private var position = 0
     private val pickimagescode = 0
@@ -209,12 +208,6 @@ class FirstActivity : AppCompatActivity() {
         val kenteken = kenteken.text.toString()
         val datum = datum.text.toString()
 
-//        val checkKabel = checkKabel.isChecked
-//        val checkNummerplaten = checkNummerplaten.isChecked
-//        val checkDieselslot = checkDieselslot.isChecked
-//        val checkFietsendrager = checkFietsendrager.isChecked
-//        val checkRijplaten = checkRijplaten.isChecked
-
         val veld = arrayListOf(
             "Naam: $naamGebruiker",
             "Controleur: $controleur",
@@ -223,6 +216,9 @@ class FirstActivity : AppCompatActivity() {
         )
 
         val intent = Intent(Intent.ACTION_SEND_MULTIPLE)
+
+        intent.type = "mailto/*"
+
         intent.putExtra(Intent.EXTRA_SUBJECT, "Uitgifte auto")
         intent.putExtra(Intent.EXTRA_EMAIL, recipients)
 
@@ -236,7 +232,7 @@ class FirstActivity : AppCompatActivity() {
         sb.append("\n")
         sb.append("Meegenomen accessories:", "\n")
 
-        var r: String = ""
+        var r = ""
 
         if (checkKabel.isChecked) {
             r += checkKabel.text.toString()
@@ -268,10 +264,9 @@ class FirstActivity : AppCompatActivity() {
         }
 
         intent.putExtra(Intent.EXTRA_TEXT, sb.toString())
-        intent.putParcelableArrayListExtra(Intent.EXTRA_STREAM, images)
         intent.type = "image/*"
+        intent.putExtra(Intent.EXTRA_STREAM, images)
 
-        intent.type = "mailto/*"
         startActivity(Intent.createChooser(intent, "Kies een e-mailclient"))
 
     }
