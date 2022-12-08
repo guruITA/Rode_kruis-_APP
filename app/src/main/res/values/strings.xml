@@ -20,4 +20,8 @@
     <string name="vorige">Vorige</string>
     <string name="versturen">Versturen</string>
     <string name="diversen">Diversen</string>
+    <string name="email_cc">Email CC</string>
+    <string name="auto_papieren">Auto Papieren</string>
+    <string name="ik_ga_akkoord_om_mijn_gegevens_te_sturen">Ik ga akkoord om mijn gegevens te sturen</string>
+    <string name="disselslot">Disselslot</string>
 </resources>
