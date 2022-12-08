@@ -10,22 +10,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
         android:orientation="vertical"
         tools:context=".FirstActivity">
-
-        <EditText
-            android:id="@+id/email"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:background="@color/white"
-            android:inputType="text"
-            android:text="@string/_2087628_talnet_nl"
-            android:padding="5dp"
-            android:textColor="@color/black"
-            android:visibility="gone"
-            tools:ignore="LabelFor,TextFields" />
 
         <EditText
             android:id="@+id/naamGebruiker"
@@ -84,12 +70,24 @@
                 android:layout_height="38dp"
                 android:layout_marginEnd="5dp"
                 android:text="@string/vandaag"
-                android:textSize="12sp"
                 android:textAllCaps="false"
+                android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 tools:ignore="MissingConstraints" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <EditText
+            android:id="@+id/emailCc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@color/white"
+            android:hint="@string/email_cc"
+            android:inputType="text"
+            android:padding="5dp"
+            android:textColor="@color/black"
+            tools:ignore="TextFields" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -110,13 +108,13 @@
                 android:id="@+id/checkKabel"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:text="@string/kabel"/>
+                android:text="@string/kabel" />
 
             <CheckBox
                 android:id="@+id/checkNummerplaten"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:text="@string/nummerplaten"/>
+                android:text="@string/nummerplaten" />
 
         </LinearLayout>
 
@@ -129,13 +127,13 @@
                 android:id="@+id/checkDieselslot"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:text="@string/dieselslot"/>
+                android:text="@string/disselslot" />
 
             <CheckBox
                 android:id="@+id/checkFietsendrager"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:text="@string/fietsendrager"/>
+                android:text="@string/fietsendrager" />
 
         </LinearLayout>
 
@@ -148,17 +146,19 @@
                 android:id="@+id/checkRijplaten"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:text="@string/rijplaten"/>
+                android:text="@string/rijplaten" />
 
-            <Space
+            <CheckBox
+                android:id="@+id/checkAutoPapieren"
                 android:layout_width="150dp"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:text="@string/auto_papieren" />
 
         </LinearLayout>
 
 
         <EditText
-            android:id="@+id/diverse"
+            android:id="@+id/diversen"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
@@ -168,84 +168,22 @@
             android:padding="5dp"
             android:textColor="@color/black" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="20dp"
-            android:gravity="center_vertical"
-            android:text="@string/foto_s_uploaden"
-            android:textSize="20sp" />
-
-        <Button
-            android:id="@+id/pickImageBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="@string/selecteer_foto_s"
-            app:layout_constraintEnd_toEndOf="parent"
-            tools:ignore="MissingConstraints" />
-
-        <TextView
-            android:id="@+id/error"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/geen_foto_s_geselecteerd"
-            android:textColor="@color/design_default_color_error"
-            android:visibility="gone"
-            />
-
-        <TextView
-            android:id="@+id/re"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="@string/er_zijn_geen_foto_s_geselecteerd"
-            android:textColor="@color/design_default_color_error"
-            android:visibility="gone"
-            />
-
-        <ImageSwitcher
-            android:id="@+id/imageSwitcher"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            tools:ignore="MissingConstraints"
-            tools:srcCompat="@tools:sample/avatars" />
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:gravity="center">
-
-            <Button
-                android:id="@+id/previousBtn"
-                android:layout_width="150dp"
+            <CheckBox
+                android:id="@+id/AVG"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/vorige"
-                android:visibility="gone"
-                tools:ignore="MissingConstraints" />
-
-            <Button
-                android:id="@+id/nextBtn"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:text="@string/volgende"
-                android:visibility="gone"
-                app:layout_constraintEnd_toEndOf="parent"
-                tools:ignore="MissingConstraints" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="50dp"
+                android:text="@string/ik_ga_akkoord_om_mijn_gegevens_te_sturen"
+                tools:ignore="DuplicateIds" />
 
         <Button
             android:id="@+id/verstuur"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
             android:text="@string/versturen"
             android:textAllCaps="false" />
 

@@ -1,9 +1,9 @@
 package com.example.rodekruisapp
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 
 class MainActivity : AppCompatActivity() {
@@ -13,7 +13,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
 
-        //ambulance -> firstActivity
+        //auto -> firstActivity
         val auto: Button = findViewById(R.id.auto)
         auto.setOnClickListener {
             val intent = Intent(this, FirstActivity::class.java)
