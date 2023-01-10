@@ -8,16 +8,14 @@ import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
-import android.widget.CheckBox
-import android.widget.EditText
-import android.widget.TextView
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import java.text.SimpleDateFormat
 import java.util.*
 
+class QuadActivity : AppCompatActivity() {
 
-class FirstActivity : AppCompatActivity() {
+    private lateinit var radioGroup: RadioGroup
 
     //Edit text kan niet leeg zijn
     lateinit var naamGebruiker: EditText
@@ -26,13 +24,14 @@ class FirstActivity : AppCompatActivity() {
     private lateinit var emailCc: EditText
 
     //checkboxes
-    private lateinit var checkKabel: CheckBox
+    private lateinit var checkQuadtas: CheckBox
     private lateinit var checkNummerplaten: CheckBox
     private lateinit var checkDieselslot: CheckBox
-    private lateinit var checkFietsendrager: CheckBox
+    private lateinit var checkQuadhelm: CheckBox
     private lateinit var checkRijplaten: CheckBox
-    private lateinit var checkAutoPapieren: CheckBox
-    lateinit var diversen: EditText
+    private lateinit var checkVoertuigPapieren: CheckBox
+    private lateinit var checkQuadaanhanger: CheckBox
+    private lateinit var diversen: EditText
 
     //huidige tijd
     private lateinit var calendar: Calendar
@@ -41,33 +40,38 @@ class FirstActivity : AppCompatActivity() {
     private lateinit var datum: TextView
     lateinit var button: Button
 
+    private lateinit var schadevrij: CheckBox
+
     //Voor AVG check
-    private lateinit var AVG: CheckBox
+    private lateinit var avg: CheckBox
     lateinit var verstuur: Button
 
     @SuppressLint("SimpleDateFormat")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_first)
+        setContentView(R.layout.activity_quad)
 
         //naam en terug naar main pagina
         val actionBar = supportActionBar
-        actionBar!!.title = "Auto"
+        actionBar!!.title = "Quad"
         actionBar.setDisplayHomeAsUpEnabled(true)
 
+        radioGroup = findViewById(R.id.radioGroup)
+
         //Edit text kan niet leeg zijn
-        emailCc = findViewById(R.id.emailCc)
         naamGebruiker = findViewById(R.id.naamGebruiker)
         controleur = findViewById(R.id.controleur)
         kenteken = findViewById(R.id.kenteken)
+        emailCc = findViewById(R.id.emailCc)
 
         //checkboxes
-        checkKabel = findViewById(R.id.checkKabel)
+        checkQuadtas = findViewById(R.id.checkQuadtas)
         checkNummerplaten = findViewById(R.id.checkNummerplaten)
         checkDieselslot = findViewById(R.id.checkDieselslot)
-        checkFietsendrager = findViewById(R.id.checkFietsendrager)
+        checkQuadhelm = findViewById(R.id.checkQuadhelm)
         checkRijplaten = findViewById(R.id.checkRijplaten)
-        checkAutoPapieren = findViewById(R.id.checkAutoPapieren)
+        checkVoertuigPapieren = findViewById(R.id.checkVoertuigPapieren)
+        checkQuadaanhanger = findViewById(R.id.checkQuadaanhanger)
         diversen = findViewById(R.id.diversen)
 
         //huidige tijd
@@ -79,7 +83,11 @@ class FirstActivity : AppCompatActivity() {
         button.setOnClickListener { datum.text = date }
 
         //Voor AVG check
-        AVG = findViewById(R.id.AVG)
+        avg = findViewById(R.id.AVG)
+
+        //Var van schadevrij
+        schadevrij = findViewById(R.id.schadevrij)
+
         verstuur = findViewById(R.id.verstuur)
         val builder = AlertDialog.Builder(this)
 
@@ -88,7 +96,8 @@ class FirstActivity : AppCompatActivity() {
             if (naamGebruiker.text.toString().trim().isEmpty() ||
                 controleur.text.toString().trim().isEmpty() ||
                 kenteken.text.toString().trim().isEmpty() ||
-                datum.text.toString().trim().isEmpty()
+                datum.text.toString().trim().isEmpty() ||
+                !avg.isChecked
             ) {
                 if (naamGebruiker.text.toString().trim().isEmpty()) {
                     naamGebruiker.error = "Verplicht"
@@ -100,8 +109,8 @@ class FirstActivity : AppCompatActivity() {
                     kenteken.error = "Verplicht"
                 }
 
-                if (!AVG.isChecked){
-                    AVG.error = "Verplicht"
+                if (!avg.isChecked) {
+                    avg.error = "Verplicht"
                 }
 
             } else {
@@ -125,8 +134,16 @@ class FirstActivity : AppCompatActivity() {
         val emailCc = emailCc.text.toString()
         val aEmailCC = arrayOf(emailCc)
 
+        //Om bij de subject te laten zien of het een inname is of een uitgifte
+        val selectRadio: Int = radioGroup.checkedRadioButtonId
+        val radioButtons = findViewById<RadioButton>(selectRadio)
+        var a = ""
+        if (radioButtons.isChecked) {
+            a += radioButtons.text.toString()
+        }
+
         val intent = Intent(Intent.ACTION_SEND_MULTIPLE)
-        intent.putExtra(Intent.EXTRA_SUBJECT, "Uitgifte auto")
+        intent.putExtra(Intent.EXTRA_SUBJECT, "$a van Quad")
         intent.putExtra(Intent.EXTRA_EMAIL, aEmailList)
         intent.putExtra(Intent.EXTRA_CC, aEmailCC)
         intent.type = "mailto/*"
@@ -141,34 +158,34 @@ class FirstActivity : AppCompatActivity() {
             "Naam: $naamGebruiker",
             "Controleur: $controleur",
             "Kenteken: $kenteken",
-            "Datum: $datum"
+            "Datum en tijd: $datum"
         )
 
         val sb = StringBuilder()
-        sb.append("Gegevens:", "\n")
-        for (a in veld) {
-            sb.append(a)
+        sb.append("Gegevens: \n")
+        for (b in veld) {
+            sb.append(b)
             sb.append("\n")
         }
 
         sb.append("\n")
-        sb.append("Meegenomen accessories:", "\n")
+
+        sb.append("Accessories: \n")
 
         var r = ""
 
-        if (checkKabel.isChecked) {
-            r += checkKabel.text.toString()
+        if (checkQuadtas.isChecked) {
+            r += checkQuadtas.text.toString()
             r = "$r \n"
         }
-3
 
         if (checkNummerplaten.isChecked) {
             r += checkNummerplaten.text.toString()
             r = "$r \n"
         }
 
-        if (checkFietsendrager.isChecked) {
-            r += checkFietsendrager.text.toString()
+        if (checkQuadhelm.isChecked) {
+            r += checkQuadhelm.text.toString()
             r = "$r \n"
         }
 
@@ -181,12 +198,39 @@ class FirstActivity : AppCompatActivity() {
             r += checkRijplaten.text.toString()
             r = "$r \n"
         }
-        if (checkAutoPapieren.isChecked) {
-            r += checkAutoPapieren.text.toString()
+
+        if (checkVoertuigPapieren.isChecked) {
+            r += checkVoertuigPapieren.text.toString()
             r = "$r \n"
         }
 
-        sb.append("Diversen: $diversen")
+        if (checkQuadaanhanger.isChecked) {
+            r += checkQuadaanhanger.text.toString()
+            r = "$r \n"
+        }
+
+
+        sb.append(r)
+
+        sb.append("Diversen: $diversen \n \n")
+
+        var b = ""
+        if (schadevrij.isChecked) {
+            b += schadevrij.text.toString()
+            b = "$b \n \n"
+        }
+
+        sb.append(b)
+
+        sb.append("Toestemming: \n")
+
+        var x = ""
+        if (avg.isChecked) {
+            x += avg.text.toString()
+            x = "$x \n"
+        }
+
+        sb.append(x)
 
         intent.putExtra(Intent.EXTRA_TEXT, sb.toString())
         startActivity(Intent.createChooser(intent, "Kies een e-mailclient"))
