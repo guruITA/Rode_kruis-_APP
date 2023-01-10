@@ -13,42 +13,45 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
 
-        //auto -> firstActivity
+        //auto -> AutoActivity
         val auto: Button = findViewById(R.id.auto)
         auto.setOnClickListener {
-            val intent = Intent(this, FirstActivity::class.java)
+            val intent = Intent(this, AutoActivity::class.java)
             startActivity(intent)
         }
 
-        //ambulance -> secondActivity
+        //ambulance -> AmbulanceActivity
         val ambulance: Button = findViewById(R.id.ambulance)
         ambulance.setOnClickListener {
-            val intent = Intent(this, SecondActivity::class.java)
+            val intent = Intent(this, AmbulanceActivity::class.java)
             startActivity(intent)
         }
 
-        //gator -> thirdActivity
+        //gator -> GatorActivity
         val gator: Button = findViewById(R.id.gator)
         gator.setOnClickListener {
-            val intent = Intent(this, ThirdActivity::class.java)
+            val intent = Intent(this, GatorActivity::class.java)
             startActivity(intent)
         }
 
+        //quad -> QuadActivity
         val quad: Button = findViewById(R.id.quad)
         quad.setOnClickListener {
-            val intent = Intent(this, FourthActivity::class.java)
+            val intent = Intent(this, QuadActivity::class.java)
             startActivity(intent)
         }
 
+        //fiets -> FietsActivity
         val fiets: Button = findViewById(R.id.fiets)
         fiets.setOnClickListener {
-            val intent = Intent(this, FifthActivity::class.java)
+            val intent = Intent(this, FietsActivity::class.java)
             startActivity(intent)
         }
 
+        //aanhanger -> AanhangerActivity
         val aanhanger: Button = findViewById(R.id.aanhanger)
         aanhanger.setOnClickListener {
-            val intent = Intent(this, SixthActivity::class.java)
+            val intent = Intent(this, AanhangerActivity::class.java)
             startActivity(intent)
         }
 
