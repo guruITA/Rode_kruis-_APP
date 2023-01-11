@@ -130,7 +130,7 @@ class QuadActivity : AppCompatActivity() {
     //Gegevens sturen naar email
     private fun sendMail() {
 
-        val aEmailList = arrayOf("2087628@talnet.nl")
+        val aEmailList = arrayOf("Mdlogistiek@redcross.nl")
         val emailCc = emailCc.text.toString()
         val aEmailCC = arrayOf(emailCc)
 

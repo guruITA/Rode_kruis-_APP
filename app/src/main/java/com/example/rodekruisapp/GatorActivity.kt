@@ -32,6 +32,14 @@ class GatorActivity : AppCompatActivity() {
     private lateinit var checkPapieren: CheckBox
     private lateinit var checkHoofdsteun: CheckBox
     private lateinit var checkKussentje: CheckBox
+
+    private lateinit var min1: Button
+    private lateinit var nummer1: TextView
+    private lateinit var plus1: Button
+    private lateinit var min2: Button
+    private lateinit var nummer2: TextView
+    private lateinit var plus2: Button
+
     private lateinit var diversen: EditText
 
     //huidige tijd
@@ -77,6 +85,14 @@ class GatorActivity : AppCompatActivity() {
         checkPapieren = findViewById(R.id.checkPapieren)
         checkHoofdsteun = findViewById(R.id.checkHoofdsteun)
         checkKussentje = findViewById(R.id.checkKussentje)
+
+        min1 = findViewById(R.id.min1)
+        nummer1 = findViewById(R.id.nummer1)
+        plus1 = findViewById(R.id.plus1)
+        min2 = findViewById(R.id.min2)
+        nummer2 = findViewById(R.id.nummer2)
+        plus2 = findViewById(R.id.plus2)
+
         diversen = findViewById(R.id.diversen)
 
         //huidige tijd
@@ -89,6 +105,33 @@ class GatorActivity : AppCompatActivity() {
 
         //Voor AVG check
         avg = findViewById(R.id.AVG)
+
+        var num1 = 0
+        plus1.setOnClickListener {
+            num1++
+            nummer1.text = num1.toString()
+        }
+
+        min1.setOnClickListener {
+            if(num1 > 0) {
+                num1--
+            }
+            nummer1.text = num1.toString()
+        }
+
+        var num2 = 0
+        plus2.setOnClickListener {
+            num2++
+            nummer2.text = num2.toString()
+        }
+
+        min2.setOnClickListener {
+            if(num2 > 0) {
+                num2--
+            }
+            nummer2.text = num2.toString()
+        }
+
 
         //Schadevrij
         schadevrij = findViewById(R.id.schadevrij)
@@ -136,7 +179,7 @@ class GatorActivity : AppCompatActivity() {
     //Gegevens sturen naar email
     private fun sendMail() {
 
-        val aEmailList = arrayOf("2087628@talnet.nl")
+        val aEmailList = arrayOf("Mdlogistiek@redcross.nl")
         val emailCc = emailCc.text.toString()
         val aEmailCC = arrayOf(emailCc)
 
@@ -159,6 +202,8 @@ class GatorActivity : AppCompatActivity() {
         val controleur = controleur.text.toString()
         val kenteken = kenteken.text.toString()
         val datum = datum.text.toString()
+        val nummer1 = nummer1.text.toString()
+        val nummer2 = nummer2.text.toString()
         val diversen = diversen.text.toString()
 
         val veld = arrayListOf(
@@ -222,9 +267,18 @@ class GatorActivity : AppCompatActivity() {
 
         sb.append(r)
 
-        sb.append("Diversen: $diversen \n")
+        sb.append("Motorhelm: $nummer1 \n")
+        sb.append("Motorkleding: $nummer2 \n")
 
-        sb.append("\n")
+        sb.append("Diversen: $diversen \n \n")
+
+        var b = ""
+        if (schadevrij.isChecked) {
+            b += schadevrij.text.toString()
+            b = "$b \n \n"
+        }
+
+        sb.append(b)
 
         sb.append("Toestemming: \n")
 
