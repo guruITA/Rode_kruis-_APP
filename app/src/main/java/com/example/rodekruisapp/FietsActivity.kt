@@ -27,13 +27,10 @@ class FietsActivity : AppCompatActivity() {
     private lateinit var checkFietsaanhanger: CheckBox
     private lateinit var checkEhbotas: CheckBox
     private lateinit var checkVoorlampje: CheckBox
+    private lateinit var checkVlaggetje: CheckBox
     private lateinit var min1: Button
     private lateinit var nummer1: TextView
     private lateinit var plus1: Button
-    private lateinit var min2: Button
-    private lateinit var nummer2: TextView
-    private lateinit var plus2: Button
-    private lateinit var checkVlaggetje: CheckBox
 
     private lateinit var diversen: EditText
 
@@ -110,9 +107,6 @@ class FietsActivity : AppCompatActivity() {
         min1 = findViewById(R.id.min1)
         nummer1 = findViewById(R.id.nummer1)
         plus1 = findViewById(R.id.plus1)
-        min2 = findViewById(R.id.min2)
-        nummer2 = findViewById(R.id.nummer2)
-        plus2 = findViewById(R.id.plus2)
         diversen = findViewById(R.id.diversen)
 
         var num1 = 0
@@ -126,19 +120,6 @@ class FietsActivity : AppCompatActivity() {
                 num1--
             }
             nummer1.text = num1.toString()
-        }
-
-        var num2 = 0
-        plus2.setOnClickListener {
-            num2++
-            nummer2.text = num2.toString()
-        }
-
-        min2.setOnClickListener {
-            if(num2 > 0) {
-                num2--
-            }
-            nummer2.text = num2.toString()
         }
 
         //Var van schadevrij
@@ -197,7 +178,7 @@ class FietsActivity : AppCompatActivity() {
     //Gegevens sturen naar email
     private fun sendMail() {
 
-        val aEmailList = arrayOf("2087628@talnet.nl")
+        val aEmailList = arrayOf("Mdlogistiek@redcross.nl")
         val emailCc = emailCc.text.toString()
         val aEmailCC = arrayOf(emailCc)
 
@@ -220,7 +201,6 @@ class FietsActivity : AppCompatActivity() {
         val fietsnummer = fietsnummer.text.toString()
         val datum = datum.text.toString()
         val nummer1 = nummer1.text.toString()
-        val nummer2 = nummer2.text.toString()
         val diversen = diversen.text.toString()
 
         val veld = arrayListOf(
@@ -265,8 +245,7 @@ class FietsActivity : AppCompatActivity() {
 
         sb.append(r)
 
-        sb.append("Fietselm: $nummer1 \n")
-        sb.append("Fietskleding: $nummer2 \n")
+        sb.append("Fietshelm: $nummer1 \n")
 
         sb.append("Diversen: $diversen \n \n")
 

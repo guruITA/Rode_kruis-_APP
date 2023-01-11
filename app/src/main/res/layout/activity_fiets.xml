@@ -208,9 +208,10 @@
                 android:id="@+id/constraintLayout4"
                 android:layout_width="0dp"
                 android:layout_height="80dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginEnd="13dp"
-                app:layout_constraintEnd_toStartOf="@+id/constraintLayout2"
+                android:layout_marginStart="100dp"
+                android:layout_marginEnd="100dp"
+                android:foregroundGravity="center"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.387"
                 app:layout_constraintStart_toStartOf="parent"
                 tools:ignore="MissingConstraints"
@@ -267,68 +268,6 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/constraintLayout2"
-                android:layout_width="0dp"
-                android:layout_height="80dp"
-                android:layout_marginStart="13dp"
-                android:layout_marginEnd="24dp"
-                android:foregroundGravity="center"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/constraintLayout4"
-                tools:ignore="MissingConstraints"
-                tools:layout_editor_absoluteY="0dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/fietskleding"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:ignore="MissingConstraints" />
-
-                <Button
-                    android:id="@+id/plus2"
-                    android:layout_width="55dp"
-                    android:layout_height="wrap_content"
-                    android:text="+1"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.968"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.812"
-                    tools:ignore="MissingConstraints" />
-
-                <TextView
-                    android:id="@+id/nummer2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="0"
-                    android:textSize="20dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/plus2"
-                    app:layout_constraintHorizontal_bias="0.523"
-                    app:layout_constraintStart_toEndOf="@+id/min2"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.698"
-                    tools:ignore="MissingConstraints" />
-
-                <Button
-                    android:id="@+id/min2"
-                    android:layout_width="55dp"
-                    android:layout_height="wrap_content"
-                    android:text="-1"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.042"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.812"
-                    tools:ignore="MissingConstraints" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
