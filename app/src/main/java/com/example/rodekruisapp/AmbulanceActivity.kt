@@ -123,7 +123,7 @@ class AmbulanceActivity : AppCompatActivity() {
                 builder.setTitle("AVG toestemming verwerken persoongegevens")
                     .setMessage("Uw gegevens worden 3 maanden in ons systeem bewaard, gaat u hiermee akkoord?")
                     .setCancelable(true)
-                    .setPositiveButton("Akkord") { dialogInterface, to -> sendMail().to(finish()) }
+                    .setPositiveButton("Akkoord") { dialogInterface, to -> sendMail().to(finish()) }
                     .setNegativeButton("Niet akkoord") { dialogInterface, to -> dialogInterface.cancel() }
                     .show()
 

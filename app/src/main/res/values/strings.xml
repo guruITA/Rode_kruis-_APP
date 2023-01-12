@@ -17,7 +17,6 @@
     <string name="inname">Inname</string>
     <string name="uitgifte">Uitgifte</string>
     <string name="ik_ga_akkoord_om_mijn_gegevens_te_sturen_volgens_avg">Ik ga akkoord om mijn gegevens te sturen volgens avg</string>
-    <string name="quad_papieren">Quad papieren</string>
     <string name="fietsnummer">Fietsnummer</string>
     <string name="fiets_papieren">Fiets papieren</string>
     <string name="fietsaanhanger">Fietsaanhanger</string>
@@ -45,5 +44,6 @@
     <string name="fietshelm">Fietshelm</string>
     <string name="fietskleding">Fietskleding</string>
     <string name="motorhelm">Motorhelm</string>
+    <string name="de_quad_gaat_los_mee">De quad gaat los mee</string>
 
 </resources>

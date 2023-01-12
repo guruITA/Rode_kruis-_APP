@@ -106,7 +106,7 @@
                     android:autofillHints=""
                     android:editable="false"
                     android:hint="@string/datum"
-                    android:inputType="none"
+                    android:inputType="text"
                     android:padding="10dp"
                     android:textColor="@color/black"
                     app:layout_constraintEnd_toEndOf="parent"
