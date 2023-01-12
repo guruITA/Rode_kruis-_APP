@@ -24,13 +24,22 @@ class QuadActivity : AppCompatActivity() {
     private lateinit var emailCc: EditText
 
     //checkboxes
-    private lateinit var checkQuadtas: CheckBox
-    private lateinit var checkNummerplaten: CheckBox
-    private lateinit var checkDieselslot: CheckBox
-    private lateinit var checkQuadhelm: CheckBox
+    private lateinit var checkKentekenplaten: CheckBox
     private lateinit var checkRijplaten: CheckBox
-    private lateinit var checkVoertuigPapieren: CheckBox
+    private lateinit var checkPapieren: CheckBox
     private lateinit var checkQuadaanhanger: CheckBox
+    private lateinit var checkBlauwekrat: CheckBox
+    private lateinit var checkHoofdsteun: CheckBox
+    private lateinit var checkKussentje: CheckBox
+    private lateinit var checkStryker: CheckBox
+
+    private lateinit var min1: Button
+    private lateinit var nummer1: TextView
+    private lateinit var plus1: Button
+    private lateinit var min2: Button
+    private lateinit var nummer2: TextView
+    private lateinit var plus2: Button
+
     private lateinit var diversen: EditText
 
     //huidige tijd
@@ -41,6 +50,8 @@ class QuadActivity : AppCompatActivity() {
     lateinit var button: Button
 
     private lateinit var schadevrij: CheckBox
+
+    private lateinit var quadLosMee: CheckBox
 
     //Voor AVG check
     private lateinit var avg: CheckBox
@@ -65,13 +76,22 @@ class QuadActivity : AppCompatActivity() {
         emailCc = findViewById(R.id.emailCc)
 
         //checkboxes
-        checkQuadtas = findViewById(R.id.checkQuadtas)
-        checkNummerplaten = findViewById(R.id.checkNummerplaten)
-        checkDieselslot = findViewById(R.id.checkDieselslot)
-        checkQuadhelm = findViewById(R.id.checkQuadhelm)
+        checkKentekenplaten = findViewById(R.id.checkKentekenplaten)
         checkRijplaten = findViewById(R.id.checkRijplaten)
-        checkVoertuigPapieren = findViewById(R.id.checkVoertuigPapieren)
+        checkPapieren = findViewById(R.id.checkPapieren)
         checkQuadaanhanger = findViewById(R.id.checkQuadaanhanger)
+        checkHoofdsteun = findViewById(R.id.checkHoofdsteun)
+        checkKussentje = findViewById(R.id.checkKussentje)
+        checkBlauwekrat = findViewById(R.id.checkBlauwekrat)
+        checkStryker = findViewById(R.id.checkStryker)
+
+        min1 = findViewById(R.id.min1)
+        nummer1 = findViewById(R.id.nummer1)
+        plus1 = findViewById(R.id.plus1)
+        min2 = findViewById(R.id.min2)
+        nummer2 = findViewById(R.id.nummer2)
+        plus2 = findViewById(R.id.plus2)
+
         diversen = findViewById(R.id.diversen)
 
         //huidige tijd
@@ -85,8 +105,36 @@ class QuadActivity : AppCompatActivity() {
         //Voor AVG check
         avg = findViewById(R.id.AVG)
 
+        var num1 = 0
+        plus1.setOnClickListener {
+            num1++
+            nummer1.text = num1.toString()
+        }
+
+        min1.setOnClickListener {
+            if(num1 > 0) {
+                num1--
+            }
+            nummer1.text = num1.toString()
+        }
+
+        var num2 = 0
+        plus2.setOnClickListener {
+            num2++
+            nummer2.text = num2.toString()
+        }
+
+        min2.setOnClickListener {
+            if(num2 > 0) {
+                num2--
+            }
+            nummer2.text = num2.toString()
+        }
+
         //Var van schadevrij
         schadevrij = findViewById(R.id.schadevrij)
+
+        quadLosMee = findViewById(R.id.quadLosMee)
 
         verstuur = findViewById(R.id.verstuur)
         val builder = AlertDialog.Builder(this)
@@ -119,7 +167,7 @@ class QuadActivity : AppCompatActivity() {
                 builder.setTitle("AVG toestemming verwerken persoongegevens")
                     .setMessage("Uw gegevens worden 3 maanden in ons systeem bewaard, gaat u hiermee akkoord?")
                     .setCancelable(true)
-                    .setPositiveButton("Akkord") { dialogInterface, to -> sendMail().to(finish()) }
+                    .setPositiveButton("Akkoord") { dialogInterface, to -> sendMail().to(finish()) }
                     .setNegativeButton("Niet akkoord") { dialogInterface, to -> dialogInterface.cancel() }
                     .show()
 
@@ -152,6 +200,8 @@ class QuadActivity : AppCompatActivity() {
         val controleur = controleur.text.toString()
         val kenteken = kenteken.text.toString()
         val datum = datum.text.toString()
+        val nummer1 = nummer1.text.toString()
+        val nummer2 = nummer2.text.toString()
         val diversen = diversen.text.toString()
 
         val veld = arrayListOf(
@@ -174,23 +224,8 @@ class QuadActivity : AppCompatActivity() {
 
         var r = ""
 
-        if (checkQuadtas.isChecked) {
-            r += checkQuadtas.text.toString()
-            r = "$r \n"
-        }
-
-        if (checkNummerplaten.isChecked) {
-            r += checkNummerplaten.text.toString()
-            r = "$r \n"
-        }
-
-        if (checkQuadhelm.isChecked) {
-            r += checkQuadhelm.text.toString()
-            r = "$r \n"
-        }
-
-        if (checkDieselslot.isChecked) {
-            r += checkDieselslot.text.toString()
+        if (checkKentekenplaten.isChecked) {
+            r += checkKentekenplaten.text.toString()
             r = "$r \n"
         }
 
@@ -199,8 +234,8 @@ class QuadActivity : AppCompatActivity() {
             r = "$r \n"
         }
 
-        if (checkVoertuigPapieren.isChecked) {
-            r += checkVoertuigPapieren.text.toString()
+        if (checkPapieren.isChecked) {
+            r += checkPapieren.text.toString()
             r = "$r \n"
         }
 
@@ -209,14 +244,41 @@ class QuadActivity : AppCompatActivity() {
             r = "$r \n"
         }
 
+        if (checkStryker.isChecked) {
+            r += checkStryker.text.toString()
+            r = "$r \n"
+        }
+
+        if (checkHoofdsteun.isChecked) {
+            r += checkHoofdsteun.text.toString()
+            r = "$r \n"
+        }
+
+        if (checkKussentje.isChecked) {
+            r += checkKussentje.text.toString()
+            r = "$r \n"
+        }
+
+        if (checkBlauwekrat.isChecked) {
+            r += checkBlauwekrat.text.toString()
+            r = "$r \n"
+        }
 
         sb.append(r)
+
+        sb.append("Motorhelm: $nummer1 \n")
+        sb.append("Motorkleding: $nummer2 \n")
 
         sb.append("Diversen: $diversen \n \n")
 
         var b = ""
         if (schadevrij.isChecked) {
             b += schadevrij.text.toString()
+            b = "$b \n \n"
+        }
+
+        if (quadLosMee.isChecked) {
+            b += quadLosMee.text.toString()
             b = "$b \n \n"
         }
 

@@ -142,6 +142,7 @@ class FietsActivity : AppCompatActivity() {
                 controleur.text.toString().trim().isEmpty() ||
                 fietsnummer.text.toString().trim().isEmpty() ||
                 datum.text.toString().trim().isEmpty() ||
+                !checkKoppelingAanhanger.isChecked ||
                 !avg.isChecked
             ) {
 
@@ -156,6 +157,10 @@ class FietsActivity : AppCompatActivity() {
                     fietsnummer.error = "Verplicht"
                 }
 
+                if (!checkKoppelingAanhanger.isChecked) {
+                    checkKoppelingAanhanger.error = "Verplicht"
+                }
+
                 //Hier wordt gecontroleerd of de checkbox is aangevinkt
                 if (!avg.isChecked) {
                     avg.error = "Verplicht"
@@ -167,7 +172,7 @@ class FietsActivity : AppCompatActivity() {
                 builder.setTitle("AVG toestemming verwerken persoongegevens")
                     .setMessage("Uw gegevens worden 3 maanden in ons systeem bewaard, gaat u hiermee akkoord?")
                     .setCancelable(true)
-                    .setPositiveButton("Akkord") { dialogInterface, to -> sendMail().to(finish()) }
+                    .setPositiveButton("Akkoord") { dialogInterface, to -> sendMail().to(finish()) }
                     .setNegativeButton("Niet akkoord") { dialogInterface, to -> dialogInterface.cancel() }
                     .show()
 

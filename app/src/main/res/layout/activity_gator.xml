@@ -109,7 +109,7 @@
                     android:autofillHints=""
                     android:editable="false"
                     android:hint="@string/datum"
-                    android:inputType="none"
+                    android:inputType="text"
                     android:padding="10dp"
                     android:textColor="@color/black"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -202,23 +202,23 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+
+        <CheckBox
+            android:id="@+id/checkHoofdsteun"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:gravity="center">
+            android:text="@string/hoofdsteun" />
 
-            <CheckBox
-                android:id="@+id/checkHoofdsteun"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:text="@string/hoofdsteun" />
+        <CheckBox
+            android:id="@+id/checkKussentje"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="@string/kussentje" />
 
-            <CheckBox
-                android:id="@+id/checkKussentje"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:text="@string/kussentje" />
-
-        </LinearLayout>
+    </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -238,138 +238,6 @@
                 android:text="@string/papieren" />
 
         </LinearLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/constraintLayout4"
-                android:layout_width="0dp"
-                android:layout_height="80dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginEnd="13dp"
-                app:layout_constraintEnd_toStartOf="@+id/constraintLayout2"
-                app:layout_constraintHorizontal_bias="0.387"
-                app:layout_constraintStart_toStartOf="parent"
-                tools:ignore="MissingConstraints"
-                tools:layout_editor_absoluteY="0dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/motorhelm"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:ignore="MissingConstraints" />
-
-                <Button
-                    android:id="@+id/plus1"
-                    android:layout_width="55dp"
-                    android:layout_height="wrap_content"
-                    android:text="+1"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.968"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.812"
-                    tools:ignore="MissingConstraints" />
-
-                <TextView
-                    android:id="@+id/nummer1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="0"
-                    android:textSize="20dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/plus1"
-                    app:layout_constraintHorizontal_bias="0.523"
-                    app:layout_constraintStart_toEndOf="@+id/min1"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.698"
-                    tools:ignore="MissingConstraints" />
-
-                <Button
-                    android:id="@+id/min1"
-                    android:layout_width="55dp"
-                    android:layout_height="wrap_content"
-                    android:text="-1"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.042"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.812"
-                    tools:ignore="MissingConstraints" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/constraintLayout2"
-                android:layout_width="0dp"
-                android:layout_height="80dp"
-                android:layout_marginStart="13dp"
-                android:layout_marginEnd="24dp"
-                android:foregroundGravity="center"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/constraintLayout4"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="MissingConstraints">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Motorkleding"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:ignore="MissingConstraints" />
-
-                <Button
-                    android:id="@+id/plus2"
-                    android:layout_width="55dp"
-                    android:layout_height="wrap_content"
-                    android:text="+1"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.968"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.812"
-                    tools:ignore="MissingConstraints" />
-
-                <TextView
-                    android:id="@+id/nummer2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="0"
-                    android:textSize="20dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/plus2"
-                    app:layout_constraintHorizontal_bias="0.523"
-                    app:layout_constraintStart_toEndOf="@+id/min2"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.698"
-                    tools:ignore="MissingConstraints" />
-
-                <Button
-                    android:id="@+id/min2"
-                    android:layout_width="55dp"
-                    android:layout_height="wrap_content"
-                    android:text="-1"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.042"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.812"
-                    tools:ignore="MissingConstraints" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
